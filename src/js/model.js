@@ -64,18 +64,15 @@ export const checkBookMark = function (isBookMarked) {
     // ✅ Add bookmark
     state.recipe.bookMark = true;
     state.bookMark.push(state.recipe);
-    console.log('✅ Added bookmark:', state.recipe);
   } else {
     // ❌ Remove bookmark
     state.recipe.bookMark = false;
     state.bookMark = state.bookMark.filter(
       bookmark => bookmark.id !== state.recipe.id
     );
-    console.log('❌ Removed bookmark:', state.recipe);
   }
 
   // 🧠 Save to localStorage
   localStorage.setItem('bookMark', JSON.stringify(state.bookMark));
-  console.log('Updated bookmarks:', state.bookMark);
 };
 

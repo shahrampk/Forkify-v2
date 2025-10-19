@@ -44,7 +44,6 @@ const controlSearchResult = async function () {
     resultViews.render(model.searchPerPage());
     paginationView.render(model.state.search);
   } catch (err) {
-    console.log(err);
     resultViews.renderError();
   }
 };
@@ -59,7 +58,6 @@ const controlServings = function (newServings) {
 
 const controlBookMark = function (isBookMarked) {
   model.checkBookMark(isBookMarked);
-  console.log(model.state.bookMark);
 
   bookMarkView.render(model.state.bookMark);
 };

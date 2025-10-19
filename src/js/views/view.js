@@ -12,8 +12,6 @@ export default class View {
     this._data = data;
     const markUp = this._generateMarkUp();
     this._clear();
-    console.log(markUp);
-    console.log(this._parentElement);
     
 
     this._parentElement.insertAdjacentHTML('afterbegin', markUp);

@@ -55,7 +55,6 @@ class AddNewRecipeView extends View {
       this.#addRecipeWindow.classList.remove('hidden');
       this.#overlay.classList.remove('hidden');
     });
-    console.log(this.#btnCloseModal);
     
   }
   hideForm() {

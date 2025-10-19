@@ -141,9 +141,6 @@ class RecipeView extends View {
 
       // Update dataset
       target.dataset.bookmark = !isBookMarked;
-      // console.log(target);
-
-      console.log('Bookmark toggled:', !isBookMarked);
       handler(!isBookMarked);
     });
   }
