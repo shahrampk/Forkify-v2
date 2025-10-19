@@ -5,8 +5,8 @@ import resultViews from './views/result-views.js';
 import paginationView from './views/pagination-view.js';
 import bookMarkView from './views/bookmark-view.js';
 import AddNewRecipeView from './views/newRecipe-view.js'
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+import '../../node_modules/core-js/stable';
+import '../../node_modules/regenerator-runtime/runtime';
 import recipeView from './views/recipe-view.js';
 
 export async function controlRecipies() {
