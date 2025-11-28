@@ -1,9 +1,10 @@
 import View from './view.js';
 class AddNewRecipeView extends View {
-  #addRecipeBtn = document.querySelector('.nav__btn--add-recipe');
-  #addRecipeWindow = document.querySelector('.add-recipe-window');
-  #overlay = document.querySelector('.overlay');
-  #btnCloseModal= document.querySelector('.btn--close-modal');
+  _addRecipeBtn = document.querySelector('.nav__btn--add-recipe');
+  _addRecipeWindow = document.querySelector('.add-recipe-window');
+  // _addRecipeWindow = document.querySelector('.add-recipe-window');
+  _overlay = document.querySelector('.overlay');
+  _btnCloseModal = document.querySelector('.btn--close-modal');
   _generateMarkUp() {
     return `
         <div class="add-recipe-window ">
@@ -50,18 +51,18 @@ class AddNewRecipeView extends View {
             </form>
           </div>`;
   }
+
+  _toggleForm() {
+    this._addRecipeWindow.classList.toggle('hidden');
+    this._overlay.classList.toggle('hidden');
+  }
+
   showForm() {
-    this.#addRecipeBtn.addEventListener('click', () => {
-      this.#addRecipeWindow.classList.remove('hidden');
-      this.#overlay.classList.remove('hidden');
-    });
-    
+    this._addRecipeBtn.addEventListener('click', this._toggleForm.bind(this));
   }
   hideForm() {
-    this.#btnCloseModal.addEventListener('click', () => {
-      this.#addRecipeWindow.classList.add('hidden');
-      this.#overlay.classList.add('hidden');
-    });
+    this._btnCloseModal.addEventListener('click', this._toggleForm.bind(this));
+    this._overlay.addEventListener('click', this._toggleForm.bind(this));
   }
 }
 

@@ -19,7 +19,6 @@ class bookMarkView extends View {
         .map(
           recipeData =>
             `
-
             <li class="preview">
                 <a class="preview__link" href="#${recipeData.id}">
                 <figure class="preview__fig">
