@@ -737,7 +737,6 @@ const controlRecipes = async function() {
         if (!id) return;
         (0, _recipeViewJsDefault.default).renderSpinner();
         if (window.screen.availWidth < 980) (0, _resultsViewJsDefault.default).toggle();
-        console.log(window.screen.availWidth < 980);
         // 0) Update results view to mark selected search result
         (0, _resultsViewJsDefault.default).update(_modelJs.getSearchResultsPage());
         // 1) Updating bookmarks view
@@ -753,8 +752,7 @@ const controlRecipes = async function() {
 };
 const controlSearchResults = async function() {
     try {
-        console.log(window.screen.availWidth <= 980 || window.screen.availWidth <= 600);
-        // 600 => ok <= 950    ====  i > 100 && i < 200
+        // 600 => ok <= 950
         if (window.screen.availWidth > 600 && window.screen.availWidth < 980) (0, _resultsViewJsDefault.default).toggle();
         (0, _resultsViewJsDefault.default).renderSpinner();
         // 1) Get search query
@@ -767,7 +765,7 @@ const controlSearchResults = async function() {
         // 4) Render initial pagination buttons
         (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
     } catch (err) {
-        console.log(err);
+        throw new Error();
     }
 };
 const controlPagination = function(goToPage) {
@@ -800,7 +798,6 @@ const controlAddRecipe = async function(newRecipe) {
         (0, _addRecipeViewJsDefault.default).renderSpinner();
         // Upload the new recipe data
         await _modelJs.uploadRecipe(newRecipe);
-        console.log(_modelJs.state.recipe);
         // Render recipe
         (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
         // Success message
@@ -877,7 +874,6 @@ const loadRecipe = async function(id) {
         state.recipe = createRecipeObject(data);
         if (state.bookmarks.some((bookmark)=>bookmark.id === id)) state.recipe.bookmarked = true;
         else state.recipe.bookmarked = false;
-        console.log(state.recipe);
     } catch (err) {
         // Temp error handling
         console.error(`${err} \u{1F4A5}\u{1F4A5}\u{1F4A5}\u{1F4A5}`);
@@ -886,10 +882,8 @@ const loadRecipe = async function(id) {
 };
 const loadSearchResults = async function(query) {
     try {
-        console.log('ok');
         state.search.query = query;
         const data = await (0, _helpersJs.AJAX)(`${(0, _configJs.API_URL)}?search=${query}&key=${(0, _configJs.KEY)}`);
-        console.log(data);
         state.search.results = data.data.recipes.map((rec)=>{
             return {
                 id: rec.id,
@@ -3501,9 +3495,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SearchView {
     _parentEl = document.querySelector(`${window.screen.availWidth < 600 ? '.search-side' : '.search-main'}`);
-    constructor(){
-        console.log(this._parentEl);
-    }
     getQuery() {
         const query = this._parentEl.querySelector('.search__field').value;
         this._clearInput();
@@ -3588,15 +3579,7 @@ var _iconsSvg = require("url:../../img/icons.svg"); // Parcel 2
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class View {
     _data;
-    /**
-   * Render the received object to the DOM
-   * @param {Object | Object[]} data The data to be rendered (e.g. recipe)
-   * @param {boolean} [render=true] If false, create markup string instead of rendering to the DOM
-   * @returns {undefined | string} A markup string is returned if render=false
-   * @this {Object} View instance
-   * @author Jonas Schmedtmann
-   * @todo Finish implementation
-   */ render(data, render = true) {
+    render(data, render = true) {
         if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
         this._data = data;
         const markup = this._generateMarkup();
@@ -3612,10 +3595,8 @@ class View {
         const curElements = Array.from(this._parentElement.querySelectorAll('*'));
         newElements.forEach((newEl, i)=>{
             const curEl = curElements[i];
-            // console.log(curEl, newEl.isEqualNode(curEl));
             // Updates changed TEXT
-            if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== '') // console.log('💥', newEl.firstChild.nodeValue.trim());
-            curEl.textContent = newEl.textContent;
+            if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== '') curEl.textContent = newEl.textContent;
             // Updates changed ATTRIBUES
             if (!newEl.isEqualNode(curEl)) Array.from(newEl.attributes).forEach((attr)=>curEl.setAttribute(attr.name, attr.value));
         });

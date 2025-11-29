@@ -19,7 +19,6 @@ const controlRecipes = async function () {
     if (window.screen.availWidth < 980) {
       resultsView.toggle();
     }
-    console.log(window.screen.availWidth < 980);
 
     // 0) Update results view to mark selected search result
     resultsView.update(model.getSearchResultsPage());
@@ -40,11 +39,7 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
-    console.log(
-      window.screen.availWidth <= 980 || window.screen.availWidth <= 600
-    );
-
-    // 600 => ok <= 950    ====  i > 100 && i < 200
+    // 600 => ok <= 950
     if (window.screen.availWidth > 600 && window.screen.availWidth < 980) {
       resultsView.toggle();
     }
@@ -63,7 +58,7 @@ const controlSearchResults = async function () {
     // 4) Render initial pagination buttons
     paginationView.render(model.state.search);
   } catch (err) {
-    console.log(err);
+    throw new Error();
   }
 };
 
@@ -106,7 +101,6 @@ const controlAddRecipe = async function (newRecipe) {
 
     // Upload the new recipe data
     await model.uploadRecipe(newRecipe);
-    console.log(model.state.recipe);
 
     // Render recipe
     recipeView.render(model.state.recipe);
