@@ -6,6 +6,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  @media only screen and (max-width: $bp-medium) {
+    background-color: #f4f0f0;
+  }
 
   &__logo {
     margin-left: 4rem;
@@ -22,14 +26,15 @@
   border-radius: 10rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-left: 3rem;
   transition: all 0.3s;
-  @media only screen and (max-width: $bp-small) {
-    display: none;
-  }
-  &:focus-within {
-    transform: translateY(-2px);
-    box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
+
+  @media only screen and (max-width: $bp-medium) {
+    &:focus-within {
+      transform: translateY(-2px);
+      box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
+    }
   }
 
   &__field {
@@ -60,6 +65,12 @@
   &__btn {
     font-weight: 600;
     font-family: inherit;
+  }
+}
+
+.search-main {
+  @media only screen and (max-width: $bp-small) {
+    display: none;
   }
 }
 
@@ -95,6 +106,9 @@
     display: flex;
     align-items: center;
 
+    @media only screen and (max-width: $bp-large) {
+      padding: 1.2rem;
+    }
     svg {
       height: 2.4rem;
       width: 2.4rem;
@@ -116,14 +130,10 @@
       background-color: $color-grey-light-2;
     }
   }
-
   &__small-screen {
     display: none;
   }
   @media only screen and (max-width: $bp-small) {
-    &__big-screen {
-      display: none;
-    }
     &__small-screen {
       display: block;
     }
@@ -167,7 +177,7 @@
   }
 
   &:hover,
-  .nav__btn--bookmarks:hover + & {
+  .nav__btn--bookmarks:focus + & {
     visibility: visible;
     opacity: 1;
   }

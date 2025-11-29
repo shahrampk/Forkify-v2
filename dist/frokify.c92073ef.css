@@ -59,6 +59,16 @@ body {
   }
 }
 
+@keyframes fade-down {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(30%);
+  }
+}
+
 .btn--small, .btn--small:link, .btn--small:visited, .btn {
   text-transform: uppercase;
   color: #fff;
@@ -264,6 +274,13 @@ body {
   justify-content: space-between;
   align-items: center;
   display: flex;
+  position: relative;
+}
+
+@media only screen and (width <= 61.25em) {
+  .header {
+    background-color: #f4f0f0;
+  }
 }
 
 .header__logo {
@@ -281,21 +298,18 @@ body {
 .search {
   background-color: #fff;
   border-radius: 10rem;
+  justify-content: space-between;
   align-items: center;
   padding-left: 3rem;
   transition: all .3s;
   display: flex;
 }
 
-@media only screen and (width <= 37.5em) {
-  .search {
-    display: none;
+@media only screen and (width <= 61.25em) {
+  .search:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 .7rem 3rem #61555114;
   }
-}
-
-.search:focus-within {
-  transform: translateY(-2px);
-  box-shadow: 0 .7rem 3rem #61555114;
 }
 
 .search__field {
@@ -328,6 +342,12 @@ body {
 .search__btn {
   font-family: inherit;
   font-weight: 600;
+}
+
+@media only screen and (width <= 37.5em) {
+  .search-main {
+    display: none;
+  }
 }
 
 .nav {
@@ -367,6 +387,12 @@ body {
   display: flex;
 }
 
+@media only screen and (width <= 78.15em) {
+  .nav__btn {
+    padding: 1.2rem;
+  }
+}
+
 .nav__btn svg {
   fill: #f38e82;
   width: 2.4rem;
@@ -394,10 +420,6 @@ body {
 }
 
 @media only screen and (width <= 37.5em) {
-  .nav__big-screen {
-    display: none;
-  }
-
   .nav__small-screen {
     display: block;
   }
@@ -439,9 +461,31 @@ body {
   background-color: #f2efee;
 }
 
-.bookmarks:hover, .nav__btn--bookmarks:hover + .bookmarks {
+.bookmarks:hover, .nav__btn--bookmarks:focus + .bookmarks {
   visibility: visible;
   opacity: 1;
+}
+
+.preview-header {
+  border-bottom: 2px solid #00000037;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px 20px;
+}
+
+.preview-header input {
+  width: 100%;
+  margin-right: 10px;
+}
+
+.preview-header {
+  display: none;
+}
+
+@media only screen and (width <= 61.25em) {
+  .preview-header {
+    display: flex;
+  }
 }
 
 .preview__link:link, .preview__link:visited {
@@ -609,14 +653,12 @@ body {
 }
 
 .preview__logo--mobile {
-  border-bottom: 2px solid #0000002f;
   font-family: Playwrite CZ, cursive;
   display: none;
 }
 
 @media only screen and (width <= 61.25em) {
   .preview__logo--mobile {
-    padding: 0 0 4rem 2.5rem;
     font-size: 30px;
     display: block;
   }

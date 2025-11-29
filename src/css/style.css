@@ -58,6 +58,14 @@ body {
   }
 }
 
+@keyframes fade-down {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(30%);
+  }
+}
 .btn--small, .btn--small:link, .btn--small:visited, .btn {
   background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
   border-radius: 10rem;
@@ -245,6 +253,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+}
+@media only screen and (max-width: 61.25em) {
+  .header {
+    background-color: #f4f0f0;
+  }
 }
 .header__logo {
   margin-left: 4rem;
@@ -262,17 +276,15 @@ body {
   border-radius: 10rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-left: 3rem;
   transition: all 0.3s;
 }
-@media only screen and (max-width: 37.5em) {
-  .search {
-    display: none;
+@media only screen and (max-width: 61.25em) {
+  .search:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 0.7rem 3rem rgba(97, 85, 81, 0.08);
   }
-}
-.search:focus-within {
-  transform: translateY(-2px);
-  box-shadow: 0 0.7rem 3rem rgba(97, 85, 81, 0.08);
 }
 .search__field {
   border: none;
@@ -299,6 +311,12 @@ body {
 .search__btn {
   font-weight: 600;
   font-family: inherit;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .search-main {
+    display: none;
+  }
 }
 
 .nav {
@@ -333,6 +351,11 @@ body {
   display: flex;
   align-items: center;
 }
+@media only screen and (max-width: 78.15em) {
+  .nav__btn {
+    padding: 1.2rem;
+  }
+}
 .nav__btn svg {
   height: 2.4rem;
   width: 2.4rem;
@@ -355,9 +378,6 @@ body {
   display: none;
 }
 @media only screen and (max-width: 37.5em) {
-  .nav__big-screen {
-    display: none;
-  }
   .nav__small-screen {
     display: block;
   }
@@ -394,11 +414,29 @@ body {
 .bookmarks__field:hover {
   background-color: #f2efee;
 }
-.bookmarks:hover, .nav__btn--bookmarks:hover + .bookmarks {
+.bookmarks:hover, .nav__btn--bookmarks:focus + .bookmarks {
   visibility: visible;
   opacity: 1;
 }
 
+.preview-header {
+  flex-direction: column;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.216);
+  gap: 20px;
+  padding: 10px 20px;
+}
+.preview-header input {
+  width: 100%;
+  margin-right: 10px;
+}
+.preview-header {
+  display: none;
+}
+@media only screen and (max-width: 61.25em) {
+  .preview-header {
+    display: flex;
+  }
+}
 .preview__link:link, .preview__link:visited {
   display: flex;
   align-items: center;
@@ -550,12 +588,10 @@ body {
 .preview__logo--mobile {
   font-family: "Playwrite CZ", cursive;
   display: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.186);
 }
 
 @media only screen and (max-width: 61.25em) {
   .preview__logo--mobile {
-    padding: 0 0 4rem 2.5rem;
     display: block;
     font-size: 30px;
   }

@@ -1,6 +1,5 @@
 import View from './view.js';
 import previewView from './previewView.js';
-import icons from 'url:../../img/icons.svg'; // Parcel 2
 
 class ResultsView extends View {
   _container = document.querySelector('.search-results');

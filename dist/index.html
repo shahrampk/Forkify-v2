@@ -15,7 +15,7 @@
   <div class="container">
     <header class="header">
       <img src="/logo.726d37a8.png" alt="Logo" class="header__logo">
-      <form class="search">
+      <form class="search search-main">
         <input type="text" class="search__field" placeholder="Search over 1,000,000 recipes...">
         <button class="btn search__btn">
           <svg class="search__icon">
@@ -27,14 +27,14 @@
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item nav__small-screen">
-            <button class="nav__btn nav__btn--search">
+            <button class="nav__btn nav__btn--search toggle-btn">
               <svg class="nav__icon">
                 <use href="/icons.21bad73c.svg#icon-search"></use>
               </svg>
             </button>
           </li>
 
-          <li class="nav__item nav__big-screen">
+          <li class="nav__item">
             <button class="nav__btn nav__btn--add-recipe">
               <svg class="nav__icon">
                 <use href="/icons.21bad73c.svg#icon-edit"></use>
@@ -43,7 +43,7 @@
             </button>
           </li>
 
-          <li class="nav__item nav__big-screen">
+          <li class="nav__item ">
             <button class="nav__btn nav__btn--bookmarks">
               <svg class="nav__icon">
                 <use href="/icons.21bad73c.svg#icon-bookmark"></use>
@@ -85,21 +85,30 @@
 
     <div class="search-results toggle">
       <!-- Cross Btn -->
-        <button class="search-results__cross--btn toggle-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f38e82" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6l-12 12"></path>
-          </svg>
+      <button class="search-results__cross--btn toggle-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f38e82" width="24" height="24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6l-12 12"></path>
+        </svg>
 
-        </button>
+      </button>
       <!-- Drag Btn -->
-        <button class="search-results__show--btn toggle-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#f38e82" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-          </svg>
-        </button>
+      <button class="search-results__show--btn toggle-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#f38e82" width="24" height="24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+        </svg>
+      </button>
       <!-- preview__link--active  -->
-      <div class="preview">
+      <div class="preview-header">
         <h1 class="preview__logo--mobile">Recipies</h1>
+        <form class="search">
+          <input type="text" class="search__field" placeholder="Search over 1,000,000 recipes...">
+          <button class="btn search__btn">
+            <svg class="search__icon">
+              <use href="/icons.21bad73c.svg#icon-search"></use>
+            </svg>
+            <span>Search</span>
+          </button>
+        </form>
       </div>
       <ul class="results" style="margin-top: 20px">
         <!-- <li class="preview">

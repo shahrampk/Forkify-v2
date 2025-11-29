@@ -73,3 +73,12 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+@keyframes fade-down {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(30%);
+  }
+}

@@ -64,12 +64,10 @@
 .preview__logo--mobile {
   font-family: 'Playwrite CZ', cursive;
   display: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.186);
 }
 
 @media only screen and (max-width: $bp-medium) {
   .preview__logo--mobile {
-    padding: 0 0 4rem 2.5rem;
     display: block;
     font-size: 30px;
   }
