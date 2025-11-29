@@ -17,6 +17,10 @@ const controlRecipes = async function () {
 
     if (!id) return;
     recipeView.renderSpinner();
+    if (window.screen.availWidth < 980) {
+      resultsView.toggle();
+    }
+    console.log(window.screen.availWidth < 980);
 
     // 0) Update results view to mark selected search result
     resultsView.update(model.getSearchResultsPage());
@@ -37,6 +41,9 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
+     if (window.screen.availWidth < 980) {
+       resultsView.toggle();
+     }
     resultsView.renderSpinner();
 
     // 1) Get search query
@@ -127,5 +134,6 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  resultsView.showHideResults();
 };
 init();

@@ -737,8 +737,6 @@ const controlRecipes = async function() {
         const id = window.location.hash.slice(1);
         if (!id) return;
         (0, _recipeViewJsDefault.default).renderSpinner();
-        if (window.screen.availWidth < 980) (0, _resultsViewJsDefault.default).toggle();
-        console.log(window.screen.availWidth < 980);
         // 0) Update results view to mark selected search result
         (0, _resultsViewJsDefault.default).update(_modelJs.getSearchResultsPage());
         // 1) Updating bookmarks view
@@ -754,7 +752,6 @@ const controlRecipes = async function() {
 };
 const controlSearchResults = async function() {
     try {
-        if (window.screen.availWidth < 980) (0, _resultsViewJsDefault.default).toggle();
         (0, _resultsViewJsDefault.default).renderSpinner();
         // 1) Get search query
         const query = (0, _searchViewJsDefault.default).getQuery();
@@ -825,7 +822,6 @@ const init = function() {
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
     (0, _paginationViewJsDefault.default).addHandlerClick(controlPagination);
     (0, _addRecipeViewJsDefault.default).addHandlerUpload(controlAddRecipe);
-    (0, _resultsViewJsDefault.default).showHideResults();
 };
 init();
 
@@ -3527,21 +3523,11 @@ var _previewViewJsDefault = parcelHelpers.interopDefault(_previewViewJs);
 var _iconsSvg = require("url:../../img/icons.svg"); // Parcel 2
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class ResultsView extends (0, _viewJsDefault.default) {
-    _container = document.querySelector('.search-results');
-    _toggleBtn = document.querySelectorAll('.toggle-btn');
     _parentElement = document.querySelector('.results');
     _errorMessage = 'No recipes found for your query! Please try again ;)';
     _message = '';
     _generateMarkup() {
         return this._data.map((result)=>(0, _previewViewJsDefault.default).render(result, false)).join('');
-    }
-    toggle() {
-        this._container.classList.toggle('toggle');
-    }
-    showHideResults() {
-        [
-            ...this._toggleBtn
-        ].forEach((btn)=>btn.addEventListener('click', this.toggle.bind(this)));
     }
 }
 exports.default = new ResultsView();

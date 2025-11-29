@@ -6,13 +6,24 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100rem;
+  overflow-y: scroll;
   background-color: white;
   border-radius: 9px;
-
   padding: 5rem 6rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
   z-index: 1000;
   transition: all 0.5s;
+  @media only screen and (max-width: $bp-medium) {
+    width: 70rem;
+    max-height: 60rem;
+  }
+  @media only screen and (max-width: $bp-small) {
+    width: 50rem;
+    padding: 3rem;
+  }
+  @media only screen and (max-width: $bp-smallest) {
+    max-width: fit-content;
+  }
 
   .btn--close-modal {
     font-family: inherit;
@@ -49,11 +60,20 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem 6rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-columns: 1fr;
+  }
+
   &__column {
     display: grid;
     grid-template-columns: 1fr 2.8fr;
     align-items: center;
     gap: 1.5rem;
+    @media only screen and (max-width: $bp-smallest) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
     & label {
       font-size: 1.5rem;
@@ -67,6 +87,10 @@
       border: 1px solid #ddd;
       border-radius: 0.5rem;
       transition: all 0.2s;
+
+      @media only screen and (max-width: $bp-smallest) {
+        width: fit-content;
+      }
 
       &::placeholder {
         color: $color-grey-light-3;

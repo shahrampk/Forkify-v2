@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -484,6 +485,9 @@ body {
   padding: 3rem 0;
   display: flex;
   flex-direction: column;
+  min-width: 200px;
+  transition: all 0.5s ease-in;
+  position: relative;
 }
 @media only screen and (max-width: 61.25em) {
   .search-results {
@@ -492,19 +496,68 @@ body {
     top: 0;
     bottom: 0;
     background-color: #f2efee;
+  }
+}
+.search-results__show--btn {
+  position: absolute;
+  left: 100%;
+  top: 25%;
+  border: 2px solid #f38e82;
+  opacity: 0.5;
+  padding: 50px 5px;
+  border-left: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 10px 0 15px -2px rgba(0, 0, 0, 0.1019607843);
+  background-color: #fff;
+  z-index: 10000;
+  transition: all 0.3s;
+  display: none;
+  cursor: pointer;
+}
+@media only screen and (max-width: 61.25em) {
+  .search-results__show--btn {
+    display: block;
+  }
+}
+.search-results__show--btn:hover {
+  opacity: 1;
+}
+.search-results__cross--btn {
+  cursor: pointer;
+  position: absolute;
+  right: 3%;
+  top: 4%;
+  border: 2px solid #f38e82;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  display: none;
+}
+@media only screen and (max-width: 37.5em) {
+  .search-results__cross--btn {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 61.25em) {
+  .toggle {
     transform: translateX(-100%);
   }
 }
 
 .preview__logo--mobile {
+  font-family: "Playwrite CZ", cursive;
   display: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.186);
 }
 
 @media only screen and (max-width: 61.25em) {
   .preview__logo--mobile {
+    padding: 0 0 4rem 2.5rem;
     display: block;
-    height: 5.6rem;
-    margin: 0 0 4rem 2.5rem;
+    font-size: 30px;
   }
 }
 .results {
@@ -685,6 +738,11 @@ body {
   flex-direction: column;
   align-items: center;
 }
+@media only screen and (max-width: 37.5em) {
+  .recipe__directions {
+    padding: 5rem;
+  }
+}
 .recipe__directions-text {
   font-size: 1.7rem;
   text-align: center;
@@ -701,12 +759,30 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100rem;
+  overflow-y: scroll;
   background-color: white;
   border-radius: 9px;
   padding: 5rem 6rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
   z-index: 1000;
   transition: all 0.5s;
+}
+@media only screen and (max-width: 61.25em) {
+  .add-recipe-window {
+    width: 70rem;
+    max-height: 60rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .add-recipe-window {
+    width: 50rem;
+    padding: 3rem;
+  }
+}
+@media only screen and (max-width: 31.25em) {
+  .add-recipe-window {
+    max-width: fit-content;
+  }
 }
 .add-recipe-window .btn--close-modal {
   font-family: inherit;
@@ -742,11 +818,23 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 4rem 6rem;
 }
+@media only screen and (max-width: 61.25em) {
+  .upload {
+    grid-template-columns: 1fr;
+  }
+}
 .upload__column {
   display: grid;
   grid-template-columns: 1fr 2.8fr;
   align-items: center;
   gap: 1.5rem;
+}
+@media only screen and (max-width: 31.25em) {
+  .upload__column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 .upload__column label {
   font-size: 1.5rem;
@@ -759,6 +847,11 @@ body {
   border: 1px solid #ddd;
   border-radius: 0.5rem;
   transition: all 0.2s;
+}
+@media only screen and (max-width: 31.25em) {
+  .upload__column input {
+    width: fit-content;
+  }
 }
 .upload__column input::placeholder {
   color: #d3c7c3;

@@ -178,7 +178,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media only screen and (max-width: $bp-small) {
+      padding: 5rem;
+    }
   }
+  
 
   &__directions-text {
     font-size: 1.7rem;
