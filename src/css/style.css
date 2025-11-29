@@ -28,7 +28,7 @@ body {
   background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: calc(100vh - 8vw);
+  min-height: 100vh;
 }
 
 .container {
@@ -48,6 +48,7 @@ body {
 @media only screen and (max-width: 78.15em) {
   .container {
     max-width: 100%;
+    min-height: 100vh;
     margin: 0;
     border-radius: 0;
   }
@@ -424,6 +425,14 @@ body {
   border-bottom: 2px solid rgba(0, 0, 0, 0.216);
   gap: 20px;
   padding: 10px 20px;
+}
+.preview-header .search {
+  display: none;
+}
+@media only screen and (max-width: 37.5em) {
+  .preview-header .search {
+    display: flex;
+  }
 }
 .preview-header input {
   width: 100%;

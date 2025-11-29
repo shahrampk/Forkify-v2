@@ -731,7 +731,6 @@ var _bookmarksViewJsDefault = parcelHelpers.interopDefault(_bookmarksViewJs);
 var _addRecipeViewJs = require("./views/addRecipeView.js");
 var _addRecipeViewJsDefault = parcelHelpers.interopDefault(_addRecipeViewJs);
 var _runtime = require("regenerator-runtime/runtime");
-var _regeneratorRuntime = require("regenerator-runtime");
 const controlRecipes = async function() {
     try {
         const id = window.location.hash.slice(1);
@@ -754,7 +753,9 @@ const controlRecipes = async function() {
 };
 const controlSearchResults = async function() {
     try {
-        if (window.screen.availWidth < 980) (0, _resultsViewJsDefault.default).toggle();
+        console.log(window.screen.availWidth <= 980 || window.screen.availWidth <= 600);
+        // 600 => ok <= 950    ====  i > 100 && i < 200
+        if (window.screen.availWidth > 600 && window.screen.availWidth < 980) (0, _resultsViewJsDefault.default).toggle();
         (0, _resultsViewJsDefault.default).renderSpinner();
         // 1) Get search query
         const query = (0, _searchViewJsDefault.default).getQuery();
@@ -829,7 +830,7 @@ const init = function() {
 };
 init();
 
-},{"./model.js":"3QBkH","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","core-js/modules/web.immediate.js":"bzsBv","./config.js":"2hPh4","./views/recipeView.js":"3wx5k","./views/searchView.js":"kbE4Z","./views/resultsView.js":"kBQ4r","./views/paginationView.js":"7NIiB","./views/bookmarksView.js":"1qGeA","./views/addRecipeView.js":"8AWnP","regenerator-runtime/runtime":"f6ot0","regenerator-runtime":"f6ot0"}],"3QBkH":[function(require,module,exports,__globalThis) {
+},{"./model.js":"3QBkH","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","core-js/modules/web.immediate.js":"bzsBv","./config.js":"2hPh4","./views/recipeView.js":"3wx5k","./views/searchView.js":"kbE4Z","./views/resultsView.js":"kBQ4r","./views/paginationView.js":"7NIiB","./views/bookmarksView.js":"1qGeA","./views/addRecipeView.js":"8AWnP","regenerator-runtime/runtime":"f6ot0"}],"3QBkH":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
@@ -885,6 +886,7 @@ const loadRecipe = async function(id) {
 };
 const loadSearchResults = async function(query) {
     try {
+        console.log('ok');
         state.search.query = query;
         const data = await (0, _helpersJs.AJAX)(`${(0, _configJs.API_URL)}?search=${query}&key=${(0, _configJs.KEY)}`);
         console.log(data);
@@ -1618,7 +1620,6 @@ const timeout = function(s) {
 };
 const AJAX = async function(url, uploadData) {
     try {
-        console.log(url, uploadData);
         const fetchPro = uploadData ? fetch(url, {
             method: 'POST',
             headers: {
@@ -3499,7 +3500,10 @@ Licensed under the MIT license.
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SearchView {
-    _parentEl = document.querySelector('.search');
+    _parentEl = document.querySelector(`${window.screen.availWidth < 600 ? '.search-side' : '.search-main'}`);
+    constructor(){
+        console.log(this._parentEl);
+    }
     getQuery() {
         const query = this._parentEl.querySelector('.search__field').value;
         this._clearInput();

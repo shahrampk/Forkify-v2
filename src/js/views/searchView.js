@@ -1,5 +1,10 @@
 class SearchView {
-  _parentEl = document.querySelector('.search');
+  _parentEl = document.querySelector(
+    `${window.screen.availWidth < 600 ? '.search-side' : '.search-main'}`
+  );
+  constructor() {
+    console.log(this._parentEl);
+  }
 
   getQuery() {
     const query = this._parentEl.querySelector('.search__field').value;
@@ -17,7 +22,6 @@ class SearchView {
       handler();
     });
   }
-  
 }
 
 export default new SearchView();

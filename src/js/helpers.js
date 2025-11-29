@@ -11,8 +11,6 @@ const timeout = function (s) {
 
 export const AJAX = async function (url, uploadData = undefined) {
   try {
-    console.log(url, uploadData);
-
     const fetchPro = uploadData
       ? fetch(url, {
           method: 'POST',

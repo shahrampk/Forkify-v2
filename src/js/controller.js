@@ -9,7 +9,6 @@ import addRecipeView from './views/addRecipeView.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import { async } from 'regenerator-runtime';
 
 const controlRecipes = async function () {
   try {
@@ -41,9 +40,14 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
-     if (window.screen.availWidth < 980) {
-       resultsView.toggle();
-     }
+    console.log(
+      window.screen.availWidth <= 980 || window.screen.availWidth <= 600
+    );
+
+    // 600 => ok <= 950    ====  i > 100 && i < 200
+    if (window.screen.availWidth > 600 && window.screen.availWidth < 980) {
+      resultsView.toggle();
+    }
     resultsView.renderSpinner();
 
     // 1) Get search query

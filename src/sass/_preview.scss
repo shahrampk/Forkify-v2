@@ -7,6 +7,12 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.216);
     gap: 20px;
     padding: 10px 20px;
+    & .search {
+      display: none;
+      @media only screen and (max-width: $bp-small) {
+        display: flex;
+      }
+    }
     & input {
       width: 100%;
       margin-right: 10px;
